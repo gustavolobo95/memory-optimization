@@ -21,4 +21,7 @@ public class Post {
 
     private LocalDate createdDate;
 
+    @Column(columnDefinition = "TEXT")
+    private String content;
+
 }
