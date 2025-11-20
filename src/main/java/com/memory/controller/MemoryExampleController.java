@@ -1,5 +1,7 @@
 package com.memory.controller;
 
+import com.memory.model.User;
+import com.memory.service.MemoryExplosionFixture;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,7 +15,15 @@ public class MemoryExampleController {
      */
     @GetMapping("/getUserPosts")
     public ResponseEntity<?> getUserPosts() {
-        return ResponseEntity.ok("Teste");
+
+        User u = MemoryExplosionFixture.createUserWithHugePosts(
+                20_000,
+                2000
+        );
+
+        u.setName("Lobo");
+
+        return ResponseEntity.ok(u);
     }
 
 }
